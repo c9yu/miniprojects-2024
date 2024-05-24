@@ -75,7 +75,7 @@ Iot 개발자 미니프로젝트 리포지토리
     7.  PC(Server) 데이터 수신 C# 프로그래밍 작성
     8.  모니터링 앱 개발 (수신 및 송신)
 
-## 3일차 (2024-05-17)
+## 3일차 (2024-05-20)
 - 미니 프로젝트
     - 실무 프로젝트 문서
     - jira 사용법
@@ -96,7 +96,7 @@ Iot 개발자 미니프로젝트 리포지토리
 - 스마트홈 연동 클래스 미니프로젝트
     - 라즈베리 파이 (RPi) 셋팅 ...
 
-## 4일차 (2024-05-18)
+## 4일차 (2024-05-21)
 - 라즈베리 파이 IoT 장비 설치
     [x] 라즈베리 파이 카메라 : sudo libcamera-hello -t 0
     [] GPIO HAT
@@ -106,15 +106,64 @@ Iot 개발자 미니프로젝트 리포지토리
     [] 서보모터
 
 
-## 5일차 (2024-05-19)
+## 5일차 (2024-05-22)
 - 라즈베리 파이 IoT 장비 설치
     [x] DHT11 센서
         - GND : GND 8개 중 아무곳에나 연결
         - VCC : 5V에 연결
         - S : GPIO18에 연결
 
-## 6일차 (2024-05-21)
+## 6일차 (2024-05-23)
+- 라즈베리 파이 IoT 장비 설치
+    - 서보모터의 경우 서보모터 모듈을 사용해야 떨림을 막을 수 있음
 
+- 네트워크 대공사
+    [x] 개인 공유기, PC, 라즈베리 파이
+
+- 스마트홈 연동 클래스 미니 프로젝트
+    - 온습도 센서, RGB LED
+    - RPi <--> Windows 통신(MQTT)
+    - WPF 모니터링 앱
+
+- IoT 기기간 통신방법
+    - Modbus : 시리얼 통신으로 데이터 전송 (완전 구식)
+    - OPC UA : Modbus통신의 불편한 점을 개선 (매우 복잡)
+    - **MQTT** : 가장 편리하며 AWS, IoT, Azure IoT 클라우드 산업계 표준으로 사용
+
+- 데이터 전달 프로세스
+    - Publisher : 데이터를 만들어 Broker에 전달한다.
+    - Broker : Publisher에게 받은 데이터 중 Subscriber 요구하는 데이터를 전달한다.
+    - Publisher와 Subscriber의 관계는 고정적이지 않다.
+        - 윈도우가 Publisher나 Subscriber 역할을 하거나 RPi가 Publisher나 Subscriber 역할을 역할을 할 수도 있다.
+
+- MQTT 설정
+    - https://mosquitto.org/ 를 통해 설치
+    - listener 1883 0.0.0.0으로 변경
+        ```
+        listener port-number [ip address/host name/unix socket path]
+        listener 1883 0.0.0.0
+        ```
+    - allow_anonymous true으로 변경
+        ```
+        allow_anonymous false 를
+        allow_anonymous true 로 변경
+        ```
+    - 윈도우 -> 서비스 앱에서 Mosquitto Broker 속성에서 시작 유형을 '자동'으로 변경
+    - 고급 보안이 포함된 방화벽
+        - 새 규칙 -> 규칙 종류: 포트 -> TCP, 특정 로컬 포트 : 1883 -> 연결 허용 -> 도메인, 개인, 공용 전부 체크
+        -> 이름 및 설명 작성 (ex. 이름: MQTT 방화벽, 설명: 1833 방화벽 열기)
+
+    - https://mqtt-explorer.com/ 를 설치하여 연결을 확인
+        - New Connections
+            - 
+
+- MQTT 통신
+    - Mosquitto Broker 설치
+    - RPi : paho-mqtt 패키지 설치, 송신 (publisher)
+    - Win : MQTT Explorer를 통해 수신된 데이터를 확인 가능 (Subscriber)
+
+    - 반대로 MQTT Explorer에서 RPi로 데이터를 보내는 것도 가능
+    
 
 ## 7일차 (2024-05-22)
 
