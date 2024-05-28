@@ -1,7 +1,4 @@
-﻿using LiveChartsCore.Measure;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.VisualElements;
-using OxyPlot;
+﻿using OxyPlot;
 using OxyPlot.Legends;
 using OxyPlot.Series;
 using SmartHomeMonitoringApp.Logics;
@@ -78,6 +75,7 @@ namespace SmartHomeMonitoringApp.Views
                 LegendPosition = LegendPosition.TopRight,
                 LegendPlacement = LegendPlacement.Inside
             };
+            tmp.Legends.Add(legend);
 
 
             var tempSeries = new LineSeries
@@ -90,8 +88,8 @@ namespace SmartHomeMonitoringApp.Views
             var humidSeries = new LineSeries
             {
                 Title = "Humid(%)",
-                MarkerType = MarkerType.Circle,
-                Color = OxyColors.DarkOrange, // 습도 물색
+                MarkerType = MarkerType.Square,
+                Color = OxyColors.Aqua, // 습도 물색
             };
 
             if (ds.Tables["SmartHomeData"].Rows.Count > 0)
