@@ -176,15 +176,23 @@ Iot 개발자 미니프로젝트 리포지토리
 - 스마트홈 연동 클래스 미니프로젝트
     - [x] WPF MQTT데이터 DB로 저장
     - [x] MQTT 데이터 실시간 모니터링 -> 온도
-    - [ ] MQTT로 RPI 제어(LED 제어)
-    - [ ] WPF MQTT 데이터 히스토리 확인
+    - [x] MQTT로 RPI 제어(LED 제어)
+    - [x] WPF MQTT 데이터 히스토리 확인
 
 ## 10일차 (2024-05-28)
 - 스마트홈 연동 클래스 미니프로젝트 마무리
     - [x] WPF MQTT데이터 DB로 저장
-    - [ ] MQTT 데이터 실시간 모니터링 -> 습도
-    - [ ] MQTT로 RPI 제어(LED 제어)
-    - [ ] WPF MQTT 데이터 히스토리 확인
+    - [x] MQTT 데이터 실시간 모니터링 -> 습도
+    - [x] MQTT로 RPI 제어(LED 제어)
+    - [x] WPF MQTT 데이터 히스토리 확인
+        - LiveChart2는 차후에 다시, 현재는 OxyPlot 차트로 대체
+    
+    - 실행 결과
+        ![스마트홈1](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/mp002.png)
+
+        ![스마트홈2](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/mp003.png)
+        
+        ![스마트홈3](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/mp004.png)
 
 - 조별 미니프로젝트 발표
     - 1~5조까지
