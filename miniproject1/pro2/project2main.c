@@ -3,7 +3,7 @@ File: project2v2.c
 
 Created: 24-03-27
 
-Author: ÀÌÂù±Ô
+Author: ì´ì°¬ê·œ
 */
 
 #include <stdio.h>
@@ -22,53 +22,53 @@ int main() {
     headnode* head = createhead();
     //  head = NULL;
 
-      // ¸Ş´º¸¦ ¹İº¹ÇÏ¿© Ãâ·ÂÇÏ°í, »ç¿ëÀÚÀÇ ¼±ÅÃ¿¡ µû¶ó µ¿ÀÛ ¼öÇà
+      // ë©”ë‰´ë¥¼ ë°˜ë³µí•˜ì—¬ ì¶œë ¥í•˜ê³ , ì‚¬ìš©ìì˜ ì„ íƒì— ë”°ë¼ ë™ì‘ ìˆ˜í–‰
     while (1) {
         printMenu();
-        printf("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: \n");
-        scanf("%d", &choice); // break ¹İº¹ È½¼ö°¡ Á¤ÇØÁ® ÀÖ´õ¶óµµ
-        // ¹Ù·Î ¹İº¹¹®À» ºüÁ®³ª°¡°Ô ÇÑ´Ù.
+        printf("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: \n");
+        scanf("%d", &choice); // break ë°˜ë³µ íšŸìˆ˜ê°€ ì •í•´ì ¸ ìˆë”ë¼ë„
+        // ë°”ë¡œ ë°˜ë³µë¬¸ì„ ë¹ ì ¸ë‚˜ê°€ê²Œ í•œë‹¤.
         if (choice == 1) {
-            printf("µµ¼­ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä:");
+            printf("ë„ì„œ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”:");
             scanf("%s", btitle);
-            printf("µµ¼­ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä:");
+            printf("ë„ì„œ IDë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
             scanf("%d", &id);
-            printf("µµ¼­ ÀÛ°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä:");
+            printf("ë„ì„œ ì‘ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
             scanf("%s", author);
-            printf("µµ¼­ ÃâÆÇ»ç¸¦ ÀÔ·ÂÇÏ¼¼¿ä:");
+            printf("ë„ì„œ ì¶œíŒì‚¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
             scanf("%s", publisher);
             addBook(head, btitle, id, author, publisher);
         }
 
         else if (choice == 2) {
             printMenu2();
-            printf("°Ë»öÇÒ ¹æ¹ıÀ» ¼±ÅÃÇÏ¼¼¿ä.: ");
+            printf("ê²€ìƒ‰í•  ë°©ë²•ì„ ì„ íƒí•˜ì„¸ìš”.: ");
             scanf("%d", &choice2);
             if (choice2 == 1) {
-                printf("°Ë»öÇÒ µµ¼­ÀÇ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+                printf("ê²€ìƒ‰í•  ë„ì„œì˜ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”: ");
                 scanf("%s", btitle);
                 searchtitle(btitle, head);
             }
             if (choice2 == 2) {
-                printf("°Ë»öÇÒ µµ¼­ÀÇ ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+                printf("ê²€ìƒ‰í•  ë„ì„œì˜ IDë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
                 scanf("%d", &id);
                 searchid(id, head);
             }
             if (choice2 == 3) {
-                printf("°Ë»öÇÒ µµ¼­ÀÇ ÀÛ°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+                printf("ê²€ìƒ‰í•  ë„ì„œì˜ ì‘ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
                 scanf("%s", author);
                 searchauthor(author, head);
             }
             if (choice2 == 4) {
-                printf("°Ë»öÇÒ µµ¼­ÀÇ ÃâÆÇ»ç¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+                printf("ê²€ìƒ‰í•  ë„ì„œì˜ ì¶œíŒì‚¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
                 scanf("%s", publisher);
                 searchpublisher(publisher, head);
             }
         }
 
         else if (choice == 3) {
-            printf("»èÁ¦ÇÒ µµ¼­ÀÇ id¸¦ ÀÔ·ÂÇÏ¼¼¿ä: \n");
-            scanf("%d", &id); // scanf¿¡¼­ &¸¦ »ç¿ëÇÏÁö ¾ÊÀ¸¸é segmentation fault ¿¡·¯°¡ ¹ß»ı ÇÏ±âµµ ÇÑ´Ù.
+            printf("ì‚­ì œí•  ë„ì„œì˜ idë¥¼ ì…ë ¥í•˜ì„¸ìš”: \n");
+            scanf("%d", &id); // scanfì—ì„œ &ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šìœ¼ë©´ segmentation fault ì—ëŸ¬ê°€ ë°œìƒ í•˜ê¸°ë„ í•œë‹¤.
             deleteBook(id, head);
         }
 
@@ -77,28 +77,28 @@ int main() {
         }
 
         else if (choice == 5) {
-            printf("´ë¿©ÇÏ°íÀÚ ÇÏ´Â Ã¥ÀÇ id¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä: ");
+            printf("ëŒ€ì—¬í•˜ê³ ì í•˜ëŠ” ì±…ì˜ idë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”: ");
             scanf("%d", &id);
-            printf("´ë¿©¸¦ À§ÇØ ´ë¿©ÀÚ¸íÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä: ");
+            printf("ëŒ€ì—¬ë¥¼ ìœ„í•´ ëŒ€ì—¬ìëª…ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”: ");
             scanf("%s", renter);
             rentbook(id, renter, head);
         }
 
         else if (choice == 6) {
-            printf("¹İ³³ÇÏ°íÀÚ ÇÏ´Â Ã¥ÀÇ id¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä: ");
+            printf("ë°˜ë‚©í•˜ê³ ì í•˜ëŠ” ì±…ì˜ idë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”: ");
             scanf("%d", &id);
-            printf("¹İ³³À» À§ÇØ ´ë¿©ÀÚ¸íÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä: ");
+            printf("ë°˜ë‚©ì„ ìœ„í•´ ëŒ€ì—¬ìëª…ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”: ");
             scanf("%s", renter);
             returnbook(id, renter, head);
         }
 
         else if (choice == 0) {
-            printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+            printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
             exit(0);
         }
 
         else {
-            printf("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n");
+            printf("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.\n");
         }
     }
     return 0;

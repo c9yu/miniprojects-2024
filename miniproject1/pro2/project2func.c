@@ -3,7 +3,7 @@ File: project2func.c
 
 Created: 24-03-27
 
-Author: ÀÌÂù±Ô
+Author: ì´ì°¬ê·œ
 */
 
 #include <stdio.h>
@@ -18,22 +18,22 @@ headnode* createhead()
     return h;
 }
 
-// µµ¼­ µî·Ï ÇÔ¼ö
+// ë„ì„œ ë“±ë¡ í•¨ìˆ˜
 void addBook(headnode* h, char* title, int id, char* author, char* publisher) {
-    // »õ·Î¿î ³ëµå¸¦ µ¿Àû ÇÒ´çÇÏ¿© »ı¼º
+    // ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë™ì  í• ë‹¹í•˜ì—¬ ìƒì„±
     book* newBook = (struct Book*)malloc(sizeof(struct Book));
-    // Á¦¸ñ°ú id¸¦ ¼³Á¤, ´ÙÀ½ ³ëµå¸¦ ÇöÀçÀÇ head·Î ¼³Á¤
+    // ì œëª©ê³¼ idë¥¼ ì„¤ì •, ë‹¤ìŒ ë…¸ë“œë¥¼ í˜„ì¬ì˜ headë¡œ ì„¤ì •
     strcpy(newBook->title, title);
     newBook->id = id;
     strcpy(newBook->author, author);
     strcpy(newBook->publisher, publisher);
     newBook->next = NULL;
     strcpy(newBook->renter, "none");
-    // head¸¦ »õ·Î¿î ³ëµå·Î °»½ÅÇØ »õ·Î¿î µµ¼­°¡ Ã¹ ¹øÂ°¿¡ Ãß°¡µÇµµ·Ï ÇÔ.
+    // headë¥¼ ìƒˆë¡œìš´ ë…¸ë“œë¡œ ê°±ì‹ í•´ ìƒˆë¡œìš´ ë„ì„œê°€ ì²« ë²ˆì§¸ì— ì¶”ê°€ë˜ë„ë¡ í•¨.
     if (h->head == NULL)
     {
         h->head = newBook;
-        printf("Ã¹¹øÂ° Ã¥\n");
+        printf("ì²«ë²ˆì§¸ ì±…\n");
     } //return;
     else
     {
@@ -43,30 +43,30 @@ void addBook(headnode* h, char* title, int id, char* author, char* publisher) {
             temp = temp->next;
         }
         temp->next = newBook;
-        printf("µÎ¹øÂ°ÀÌ»ó Ã¥\n");
+        printf("ë‘ë²ˆì§¸ì´ìƒ ì±…\n");
     }
 }
 
-// µµ¼­ °Ë»ö ÇÔ¼ö
+// ë„ì„œ ê²€ìƒ‰ í•¨ìˆ˜
 
 void searchtitle(char* title, headnode* h) {
     struct Book* current = h->head;
     int i = 0;
-    // ¿¬°á ¸®½ºÆ®¸¦ ¼øÈ¸ÇÏ¸ç µµ¼­ ID°¡ ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎ
+    // ì—°ê²° ë¦¬ìŠ¤íŠ¸ë¥¼ ìˆœíšŒí•˜ë©° ë„ì„œ IDê°€ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸
     printf("\n");
-    printf("µµ¼­¸í: %s ·Î °Ë»öµÈ µµ¼­µéÀ» Ãâ·ÂÇÏ°Ú½À´Ï´Ù.", title);
+    printf("ë„ì„œëª…: %s ë¡œ ê²€ìƒ‰ëœ ë„ì„œë“¤ì„ ì¶œë ¥í•˜ê² ìŠµë‹ˆë‹¤.", title);
     printf("\n");
     while (current != NULL) {
         if (strcmp(current->title, title) == 0) {
             printf("\n");
-            printf("µµ¼­¸í: %s, µµ¼­ID: %d, ÀÛ°¡: %s, ÃâÆÇ»ç: %s",
+            printf("ë„ì„œëª…: %s, ë„ì„œID: %d, ì‘ê°€: %s, ì¶œíŒì‚¬: %s",
                 current->title, current->id, current->author, current->publisher);
             i++;
         }
         current = current->next;
     }
     if (i == 0) {
-        printf("\nÃ£À¸½Ã´Â µµ¼­°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        printf("\nì°¾ìœ¼ì‹œëŠ” ë„ì„œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
     }
 }
 
@@ -74,19 +74,19 @@ void searchid(int id, headnode* h) {
     struct Book* current = h->head;
     int i = 0;
     printf("\n");
-    printf("ID: %d ·Î °Ë»öµÈ µµ¼­µéÀ» Ãâ·ÂÇÏ°Ú½À´Ï´Ù.", id);
+    printf("ID: %d ë¡œ ê²€ìƒ‰ëœ ë„ì„œë“¤ì„ ì¶œë ¥í•˜ê² ìŠµë‹ˆë‹¤.", id);
     printf("\n");
     while (current != NULL) {
         if (current->id == id) {
             printf("\n");
-            printf("µµ¼­¸í: %s, µµ¼­ID: %d, ÀÛ°¡: %s, ÃâÆÇ»ç: %s",
+            printf("ë„ì„œëª…: %s, ë„ì„œID: %d, ì‘ê°€: %s, ì¶œíŒì‚¬: %s",
                 current->title, current->id, current->author, current->publisher);
             i++;
         }
         current = current->next;
     }
     if (i == 0) {
-        printf("\nÃ£À¸½Ã´Â µµ¼­°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        printf("\nì°¾ìœ¼ì‹œëŠ” ë„ì„œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
     }
 }
 
@@ -94,19 +94,19 @@ void searchauthor(char* author, headnode* h) {
     struct Book* current = h->head;
     int i = 0;
     printf("\n");
-    printf("ÀÛ°¡: %s ·Î °Ë»öµÈ µµ¼­µéÀ» Ãâ·ÂÇÏ°Ú½À´Ï´Ù.", author);
+    printf("ì‘ê°€: %s ë¡œ ê²€ìƒ‰ëœ ë„ì„œë“¤ì„ ì¶œë ¥í•˜ê² ìŠµë‹ˆë‹¤.", author);
     printf("\n");
     while (current != NULL) {
         if (strcmp(current->author, author) == 0) {
             printf("\n");
-            printf("µµ¼­¸í: %s, µµ¼­ID: %d, ÀÛ°¡: %s, ÃâÆÇ»ç: %s",
+            printf("ë„ì„œëª…: %s, ë„ì„œID: %d, ì‘ê°€: %s, ì¶œíŒì‚¬: %s",
                 current->title, current->id, current->author, current->publisher);
             i++;
         }
         current = current->next;
     }
     if (i == 0) {
-        printf("\nÃ£À¸½Ã´Â µµ¼­°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        printf("\nì°¾ìœ¼ì‹œëŠ” ë„ì„œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
     }
 }
 
@@ -114,39 +114,39 @@ void searchpublisher(char* publisher, headnode* h) {
     struct Book* current = h->head;
     int i = 0;
     printf("\n");
-    printf("ÃâÆÇ»ç: %s ·Î °Ë»öµÈ µµ¼­µéÀ» Ãâ·ÂÇÏ°Ú½À´Ï´Ù.", publisher);
+    printf("ì¶œíŒì‚¬: %s ë¡œ ê²€ìƒ‰ëœ ë„ì„œë“¤ì„ ì¶œë ¥í•˜ê² ìŠµë‹ˆë‹¤.", publisher);
     printf("\n");
     while (current != NULL) {
         if (strcmp(current->publisher, publisher) == 0) {
             printf("\n");
-            printf("µµ¼­¸í: %s, µµ¼­ID: %d, ÀÛ°¡: %s, ÃâÆÇ»ç: %s",
+            printf("ë„ì„œëª…: %s, ë„ì„œID: %d, ì‘ê°€: %s, ì¶œíŒì‚¬: %s",
                 current->title, current->id, current->author, current->publisher);
             i++;
         }
         current = current->next;
     }
     if (i == 0) {
-        printf("\nÃ£À¸½Ã´Â µµ¼­°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        printf("\nì°¾ìœ¼ì‹œëŠ” ë„ì„œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
     }
 }
-// µµ¼­ ´ë¿© ÇÔ¼ö
+// ë„ì„œ ëŒ€ì—¬ í•¨ìˆ˜
 void rentbook(int id, char* renter, headnode* h) {
     struct Book* current = h->head;
     int select;
     while (current != NULL) {
         if (current->id == id) {
             if (strcmp(current->renter, "none") == 0) {
-                printf("\n´ë¿© °¡´ÉÇÑ Ã¥ÀÔ´Ï´Ù\n");
-                printf("\n´ë¿© ÇÏ½Ã°Ú½À´Ï±î? ³×:1 /¾Æ´Ï¿À:0\n");
+                printf("\nëŒ€ì—¬ ê°€ëŠ¥í•œ ì±…ì…ë‹ˆë‹¤\n");
+                printf("\nëŒ€ì—¬ í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ë„¤:1 /ì•„ë‹ˆì˜¤:0\n");
                 scanf("%d", &select);
 
                 if (select == 1) {
-                    strcpy(current->renter, renter); // renter ÀÔ·Â¹Ş±â
-                    printf("\n%s ´ë¿© ¿Ï·áÇß½À´Ï´Ù.", current->title);
+                    strcpy(current->renter, renter); // renter ì…ë ¥ë°›ê¸°
+                    printf("\n%s ëŒ€ì—¬ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.", current->title);
                 }
 
                 else if (select == 0) {
-                    printf("\n´ë¿©ÇÏÁö ¾Ê°Ú½À´Ï´Ù.");
+                    printf("\nëŒ€ì—¬í•˜ì§€ ì•Šê² ìŠµë‹ˆë‹¤.");
                     //return;
                 }
 
@@ -156,17 +156,17 @@ void rentbook(int id, char* renter, headnode* h) {
             }
 
             else {
-                printf("\nÇØ´ç µµ¼­´Â ÀÌ¹Ì ´ë¿©ÁßÀÔ´Ï´Ù.\n");
+                printf("\ní•´ë‹¹ ë„ì„œëŠ” ì´ë¯¸ ëŒ€ì—¬ì¤‘ì…ë‹ˆë‹¤.\n");
             }
             return;
         }
         current = current->next;
     }
-    printf("\nÇØ´ç µµ¼­¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.\n");
+    printf("\ní•´ë‹¹ ë„ì„œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
 }
 
 
-// µµ¼­ ¹İ³³ ÇÔ¼ö
+// ë„ì„œ ë°˜ë‚© í•¨ìˆ˜
 void returnbook(int id, char* renter, headnode* h) {
     struct Book* current = h->head;
 
@@ -174,91 +174,91 @@ void returnbook(int id, char* renter, headnode* h) {
         if (current->id == id) {
             if (strcmp(current->renter, "none") != 0) {
                 strcpy(current->renter, "none");
-                printf("\n%s °¡ ¹İ³³µÇ¾ú½À´Ï´Ù.", current->title);
+                printf("\n%s ê°€ ë°˜ë‚©ë˜ì—ˆìŠµë‹ˆë‹¤.", current->title);
 
             }
             else {
-                printf("\n%s ´Â ÀÌ¹Ì ¹İ³³µÇ¾ú½À´Ï´Ù.", current->title);
+                printf("\n%s ëŠ” ì´ë¯¸ ë°˜ë‚©ë˜ì—ˆìŠµë‹ˆë‹¤.", current->title);
             }
             return;
         }
         current = current->next;
     }
-    printf("\nÇØ´ç µµ¼­¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.\n");
+    printf("\ní•´ë‹¹ ë„ì„œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
 }
 
-// µµ¼­ »èÁ¦ ÇÔ¼ö
+// ë„ì„œ ì‚­ì œ í•¨ìˆ˜
 void deleteBook(int id, headnode* h) {
     struct Book* current = h->head;
     struct Book* prev = NULL;
 
-    // ¿¬°á ¸®½ºÆ®¸¦ ¼øÈ¸ÇÏ¸ç »èÁ¦ÇÒ µµ¼­¸¦ Ã£À½
+    // ì—°ê²° ë¦¬ìŠ¤íŠ¸ë¥¼ ìˆœíšŒí•˜ë©° ì‚­ì œí•  ë„ì„œë¥¼ ì°¾ìŒ
     while (current != NULL) {
         if (current->id == id) {
             if (prev == NULL) {
-                // »èÁ¦ÇÒ ³ëµå°¡ Ã¹ ¹øÂ° ³ëµåÀÎ °æ¿ì head¸¦ ´ÙÀ½ ³ëµå·Î °»½Å
+                // ì‚­ì œí•  ë…¸ë“œê°€ ì²« ë²ˆì§¸ ë…¸ë“œì¸ ê²½ìš° headë¥¼ ë‹¤ìŒ ë…¸ë“œë¡œ ê°±ì‹ 
                 h->head = current->next;
             }
             else {
-                // ÀÌÀü ³ëµåÀÇ next¸¦ »èÁ¦ÇÒ ³ëµåÀÇ next·Î ¿¬°áÇÏ¿© ³ëµå »èÁ¦
+                // ì´ì „ ë…¸ë“œì˜ nextë¥¼ ì‚­ì œí•  ë…¸ë“œì˜ nextë¡œ ì—°ê²°í•˜ì—¬ ë…¸ë“œ ì‚­ì œ
                 prev->next = current->next;
             }
-            free(current); // ¸Ş¸ğ¸® ÇØÁ¦
-            printf("µµ¼­ »èÁ¦ ¿Ï·á\n");
+            free(current); // ë©”ëª¨ë¦¬ í•´ì œ
+            printf("ë„ì„œ ì‚­ì œ ì™„ë£Œ\n");
             return;
         }
         prev = current;
         current = current->next;
     }
-    printf("ÇØ´ç µµ¼­¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.\n");
+    printf("í•´ë‹¹ ë„ì„œë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
 }
 
-// µµ¼­ ¸ñ·Ï Ãâ·Â ÇÔ¼ö
+// ë„ì„œ ëª©ë¡ ì¶œë ¥ í•¨ìˆ˜
 void printBooks(headnode* h) {
     book* current = h->head;
     //  printf("-----1-----\n");
-    //  printf("µµ¼­ Á¦¸ñ: %s", current->title);
-    //  printf("µµ¼­ ID: %d\n",current->id);
+    //  printf("ë„ì„œ ì œëª©: %s", current->title);
+    //  printf("ë„ì„œ ID: %d\n",current->id);
 
 
     if (current == NULL) {
-        printf("µµ¼­°¡ ¾ø½À´Ï´Ù.\n");
+        printf("ë„ì„œê°€ ì—†ìŠµë‹ˆë‹¤.\n");
         return;
     }
 
-    printf("µµ¼­ ¸ñ·Ï\n");
+    printf("ë„ì„œ ëª©ë¡\n");
     while (current != NULL) {
-        printf("µµ¼­ Á¦¸ñ: %s", current->title);
-        printf(" µµ¼­ ID: %d", current->id);
-        printf(" µµ¼­ ÀÛ°¡: %s", current->author);
-        printf(" µµ¼­ ÃâÆÇ»ç: %s\n", current->publisher);
+        printf("ë„ì„œ ì œëª©: %s", current->title);
+        printf(" ë„ì„œ ID: %d", current->id);
+        printf(" ë„ì„œ ì‘ê°€: %s", current->author);
+        printf(" ë„ì„œ ì¶œíŒì‚¬: %s\n", current->publisher);
         current = current->next;
     }
 
 }
 
-// ¸Ş´º Ãâ·Â ÇÔ¼ö
+// ë©”ë‰´ ì¶œë ¥ í•¨ìˆ˜
 void printMenu() {
     printf("\n");
-    printf("\n*****¸Ş´º*****\n");
-    printf("1. µµ¼­ ±¸ÀÔ(µî·Ï)\n");
-    printf("2. µµ¼­ °Ë»ö\n");
-    printf("3. µµ¼­ »èÁ¦\n");
-    printf("4. µµ¼­ Ãâ·Â\n");
-    printf("5. µµ¼­ ´ë¿©\n");
-    printf("6. µµ¼­ ¹İ³³\n");
-    printf("0. Á¾·á\n");
+    printf("\n*****ë©”ë‰´*****\n");
+    printf("1. ë„ì„œ êµ¬ì…(ë“±ë¡)\n");
+    printf("2. ë„ì„œ ê²€ìƒ‰\n");
+    printf("3. ë„ì„œ ì‚­ì œ\n");
+    printf("4. ë„ì„œ ì¶œë ¥\n");
+    printf("5. ë„ì„œ ëŒ€ì—¬\n");
+    printf("6. ë„ì„œ ë°˜ë‚©\n");
+    printf("0. ì¢…ë£Œ\n");
     printf("**************\n");
     printf("\n");
 }
 
 void printMenu2() {
     printf("\n");
-    printf("\n*****¸Ş´º*****\n");
-    printf("1. Á¦¸ñ\n");
+    printf("\n*****ë©”ë‰´*****\n");
+    printf("1. ì œëª©\n");
     printf("2. ID\n");
-    printf("3. ÀÛ°¡\n");
-    printf("4. ÃâÆÇ»ç\n");
+    printf("3. ì‘ê°€\n");
+    printf("4. ì¶œíŒì‚¬\n");
     printf("**************\n");
     printf("\n");
 }

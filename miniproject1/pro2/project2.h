@@ -3,7 +3,7 @@ File: project2.h
 
 Created: 24-03-27
 
-Author: ÀÌÂù±Ô
+Author: ì´ì°¬ê·œ
 */
 #include <stdio.h>
 #include <stdlib.h>

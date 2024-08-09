@@ -3,7 +3,7 @@ File: project1.c
 
 Created : 24 - 03 - 13
 
-Author : ÀÌÂù±Ô
+Author : ì´ì°¬ê·œ
 */
 
 #include <stdio.h>
@@ -15,9 +15,9 @@ Author : ÀÌÂù±Ô
 
 void check(char* cid, char* cpw)
 {
-    if (strcmp(cid, "abcd") == 0) {    // c¿¡¼­ ¹®ÀÚ¿­ ºñ±³´Â strcmp »ç¿ë
-        if (strcmp(cpw, "1234") == 0) {  // °°Àº °æ¿ì 0ÀÌ Ãâ·ÂµÈ´Ù.
-            // myinfo ÆÄÀÏ ¿­±â
+    if (strcmp(cid, "abcd") == 0) {    // cì—ì„œ ë¬¸ìì—´ ë¹„êµëŠ” strcmp ì‚¬ìš©
+        if (strcmp(cpw, "1234") == 0) {  // ê°™ì€ ê²½ìš° 0ì´ ì¶œë ¥ëœë‹¤.
+            // myinfo íŒŒì¼ ì—´ê¸°
             char checkidpw[MAX_LENGTH];
             FILE* fp;
             if ((fp = fopen("myinfo.txt", "r")) == NULL) {
@@ -30,11 +30,11 @@ void check(char* cid, char* cpw)
             fclose(fp);
         }
         else {
-            printf("pw°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.\n");
+            printf("pwê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
         }
     }
     else {
-        printf("id°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.\n");
+        printf("idê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
     }
 }
 
@@ -43,10 +43,10 @@ void main()
     char id[MAX_LENGTH];
     char pw[MAX_LENGTH];
 
-    printf("id¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("idë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
     scanf("%s", id);
 
-    printf("pw¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("pwë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
     scanf("%s", pw);
 
     check(id, pw);
